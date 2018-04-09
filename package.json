@@ -1,0 +1,22 @@
+{
+  "name": "nexosisclient-elm",
+  "version": "1.0.0",
+  "description": "Nexosis API Client for Elm",
+  "main": "index.js",
+  "repository": "https://github.com/Nexosis/nexosisclient-elm.git",
+  "author": "Nexosis Inc.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "test": "node node_modules/elm-test/bin/elm-test",
+    "test-watch": "node node_modules/elm-test/bin/elm-test --watch",
+    "test-output": "node node_modules/elm-test/bin/elm-test --report=junit > junit.xml",
+    "analyse": "node node_modules/elm-analyse/js/bin/index.js -s",
+    "build": "elm-make"
+  },
+  "devDependencies": {
+    "elm": "^0.18.0",
+    "elm-analyse": "^0.13.3",
+    "elm-format": "^0.6.1-alpha",
+    "elm-test": "^0.18.12"
+  }
+}

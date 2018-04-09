@@ -1,0 +1,20 @@
+{
+    "version": "1.0.0",
+    "summary": "Nexosis API Client",
+    "repository": "https://github.com/Nexosis/nexosisclient-elm.git",
+    "license": "Apache-2.0",
+    "source-directories": [
+        "../src",
+        "."
+    ],
+    "exposed-modules": [],
+    "dependencies": {
+        "elm-community/elm-test": "4.2.0 <= v < 5.0.0",
+        "NoRedInk/elm-decode-pipeline": "3.0.0 <= v < 4.0.0",
+        "elm-community/json-extra": "2.7.0 <= v < 3.0.0",
+        "elm-lang/core": "5.1.1 <= v < 6.0.0",
+        "elm-lang/http": "1.0.0 <= v < 2.0.0",
+        "lukewestby/elm-http-builder": "5.2.0 <= v < 6.0.0"
+    },
+    "elm-version": "0.18.0 <= v < 0.19.0"
+}
