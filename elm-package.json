@@ -4,10 +4,12 @@
     "repository": "https://github.com/Nexosis/nexosisclient-elm.git",
     "license": "Apache-2.0",
     "source-directories": [
-        "src/"
+        "src"
     ],
     "exposed-modules": [
-        "Nexosis"
+        "Nexosis",
+        "Nexosis.Metrics",
+        "NexosisHelpers"
     ],
     "dependencies": {
         "NoRedInk/elm-decode-pipeline": "3.0.0 <= v < 4.0.0",
