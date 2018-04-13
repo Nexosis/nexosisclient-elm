@@ -13,8 +13,9 @@ import Nexosis.Types.ConfusionMatrix exposing (ConfusionMatrix)
 import Nexosis.Types.DataSet exposing (DataSetName, dataSetNameToString)
 import Nexosis.Types.DistanceMetric exposing (DistanceMetrics)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
-import Nexosis.Types.Session exposing (SessionData)
-import NexosisHelpers exposing (SortParameters, addHeaders, sortParams)
+import Nexosis.Types.Session exposing (ResultInterval, SessionData, SessionList, SessionResults)
+import Nexosis.Types.SortParameters exposing (SortParameters)
+import NexosisHelpers exposing (addHeaders, sortParams)
 import Time.ZonedDateTime exposing (ZonedDateTime, toISO8601)
 
 

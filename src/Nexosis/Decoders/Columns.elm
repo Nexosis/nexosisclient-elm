@@ -6,8 +6,6 @@ import Nexosis.Decoders.Date exposing (decodeDate)
 import Nexosis.Types.AggregationStrategy as Aggregate exposing (AggregationStrategy)
 import Nexosis.Types.Columns exposing (ColumnMetadata, ColumnStats, ColumnStatsDict, DataType(..), DistributionShape(..), Role(..))
 import Nexosis.Types.ImputationStrategy as Impute exposing (ImputationStrategy)
-import NexosisHelpers exposing (commaFormatInteger, formatFloatToString)
-import Time.ZonedDateTime
 
 
 decodeColumnMetadata : Decoder (List ColumnMetadata)
@@ -189,9 +187,8 @@ decodeRange =
 variableDecoder : Decoder String
 variableDecoder =
     Decode.oneOf
-        [ Decode.float |> Decode.andThen (\f -> succeed (formatFloatToString f))
+        [ Decode.float |> Decode.andThen (\f -> succeed (toString f))
         , Decode.bool |> Decode.andThen (\b -> succeed (toString b))
-        , decodeDate |> Decode.andThen (\d -> succeed (Time.ZonedDateTime.toISO8601 d))
         , Decode.string
         ]
 
@@ -199,7 +196,7 @@ variableDecoder =
 numberOrStringDecoder : Decoder String
 numberOrStringDecoder =
     Decode.oneOf
-        [ Decode.int |> Decode.andThen (\i -> commaFormatInteger i |> succeed)
-        , Decode.float |> Decode.andThen (\f -> formatFloatToString f |> succeed)
+        [ Decode.int |> Decode.andThen (\i -> toString i |> succeed)
+        , Decode.float |> Decode.andThen (\f -> toString f |> succeed)
         , Decode.string
         ]

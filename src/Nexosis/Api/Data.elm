@@ -8,7 +8,8 @@ import Nexosis.Decoders.DataSet exposing (decodeDataSetData, decodeDataSetList, 
 import Nexosis.Encoders.Columns exposing (encodeColumnMetadataList, encodeKeyColumnMetadata)
 import Nexosis.Types.Columns exposing (ColumnMetadata, DataType(..))
 import Nexosis.Types.DataSet exposing (DataSetData, DataSetList, DataSetName, DataSetStats, dataSetNameToString)
-import NexosisHelpers exposing (SortDirection(..), SortParameters, addHeaders, sortParams)
+import Nexosis.Types.SortParameters exposing (SortDirection(..), SortParameters)
+import NexosisHelpers exposing (addHeaders, sortParams)
 import Set
 
 
