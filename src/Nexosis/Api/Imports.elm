@@ -2,7 +2,7 @@ module Nexosis.Api.Imports exposing (PostAzureRequest, PostS3Request, PostUrlReq
 
 import Http
 import HttpBuilder exposing (withExpectJson)
-import Json.Encode exposing (Value, encode)
+import Json.Encode exposing (encode)
 import Nexosis exposing (ClientConfig, getBaseUrl)
 import Nexosis.Decoders.Import exposing (decodeImportDetail)
 import Nexosis.Encoders.Columns exposing (encodeKeyColumnMetadata)

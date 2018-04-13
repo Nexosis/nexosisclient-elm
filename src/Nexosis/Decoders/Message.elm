@@ -1,6 +1,6 @@
 module Nexosis.Decoders.Message exposing (decodeMessage, decodeSeverity)
 
-import Json.Decode as Decode exposing (Decoder, andThen, fail, field, map2, string, succeed)
+import Json.Decode exposing (Decoder, andThen, fail, field, map2, string, succeed)
 import Nexosis.Types.Message exposing (Message, Severity(..))
 
 

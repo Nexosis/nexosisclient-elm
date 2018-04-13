@@ -1,13 +1,13 @@
 module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, delete, get, getDataByDateRange, getRetrieveDetail, getStats, getStatsForColumn, put, updateMetadata)
 
 import Http
-import HttpBuilder exposing (RequestBuilder, withExpectJson)
+import HttpBuilder
 import Json.Encode
 import Nexosis exposing (ClientConfig, getBaseUrl)
 import Nexosis.Decoders.DataSet exposing (decodeDataSetData, decodeDataSetList, decodeDataSetStats)
 import Nexosis.Encoders.Columns exposing (encodeColumnMetadataList, encodeKeyColumnMetadata)
 import Nexosis.Types.Columns exposing (ColumnMetadata, DataType(..))
-import Nexosis.Types.DataSet as DataSet exposing (DataSet, DataSetData, DataSetList, DataSetName, DataSetStats, dataSetNameToString)
+import Nexosis.Types.DataSet exposing (DataSetData, DataSetList, DataSetName, DataSetStats, dataSetNameToString)
 import NexosisHelpers exposing (SortDirection(..), SortParameters, addHeaders, sortParams)
 import Set
 

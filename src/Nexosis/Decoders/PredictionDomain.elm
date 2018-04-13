@@ -1,6 +1,6 @@
 module Nexosis.Decoders.PredictionDomain exposing (decodePredictionDomain)
 
-import Json.Decode as Decode exposing (Decoder, andThen, fail, string, succeed)
+import Json.Decode exposing (Decoder, andThen, fail, string, succeed)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain(..))
 
 

@@ -1,7 +1,7 @@
 module Nexosis.Decoders.Import exposing (decodeImportDetail)
 
-import Json.Decode as Decode exposing (Decoder, andThen, decodeValue, dict, fail, field, float, int, list, map2, nullable, string, succeed)
-import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Decode exposing (Decoder, andThen, dict, fail, list, nullable, string, succeed)
+import Json.Decode.Pipeline exposing (decode, required)
 import Nexosis.Decoders.Columns exposing (decodeColumnMetadata)
 import Nexosis.Decoders.DataSet exposing (dataSetNameDecoder)
 import Nexosis.Decoders.Message exposing (decodeMessage)

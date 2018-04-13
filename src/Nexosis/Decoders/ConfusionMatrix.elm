@@ -1,7 +1,7 @@
 module Nexosis.Decoders.ConfusionMatrix exposing (decodeConfusionMatrix)
 
-import Json.Decode as Decode exposing (Decoder, andThen, array, dict, fail, field, float, int, list, map2, string, succeed)
-import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Decode as Decode exposing (array, int, string)
+import Json.Decode.Pipeline exposing (decode, required)
 import Nexosis.Types.ConfusionMatrix exposing (ConfusionMatrix)
 
 

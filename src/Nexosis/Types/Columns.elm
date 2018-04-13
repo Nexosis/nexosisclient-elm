@@ -1,8 +1,8 @@
 module Nexosis.Types.Columns exposing (ColumnMetadata, ColumnStats, ColumnStatsDict, DataType(..), DistributionShape(..), Role(..))
 
 import Dict exposing (Dict)
-import Nexosis.Types.AggregationStrategy as Aggregate exposing (AggregationStrategy)
-import Nexosis.Types.ImputationStrategy as Impute exposing (ImputationStrategy)
+import Nexosis.Types.AggregationStrategy exposing (AggregationStrategy)
+import Nexosis.Types.ImputationStrategy exposing (ImputationStrategy)
 import Time.ZonedDateTime exposing (ZonedDateTime)
 
 

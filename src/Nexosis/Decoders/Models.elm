@@ -1,13 +1,13 @@
 module Nexosis.Decoders.Models exposing (decodeModel, decodeModelList, decodePredictions)
 
-import Json.Decode as Decode exposing (Decoder, andThen, dict, fail, float, int, list, string, succeed)
+import Json.Decode as Decode exposing (Decoder, float, list, string)
 import Json.Decode.Pipeline exposing (decode, optional, required)
 import Nexosis.Decoders.Algorithm exposing (decodeAlgorithm)
 import Nexosis.Decoders.Columns exposing (decodeColumnMetadata)
 import Nexosis.Decoders.Data exposing (decodeData)
 import Nexosis.Decoders.Date exposing (decodeDate)
 import Nexosis.Decoders.Link exposing (decodeLink)
-import Nexosis.Decoders.Message exposing (decodeMessage, decodeSeverity)
+import Nexosis.Decoders.Message exposing (decodeMessage)
 import Nexosis.Decoders.PredictionDomain exposing (decodePredictionDomain)
 import Nexosis.Types.Models exposing (ModelData, ModelList, PredictionResult)
 

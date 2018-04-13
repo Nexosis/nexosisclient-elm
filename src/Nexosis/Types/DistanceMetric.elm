@@ -1,6 +1,6 @@
 module Nexosis.Types.DistanceMetric exposing (DistanceMetrics, DistanceValue, fromDistanceMetrics)
 
-import Dict exposing (Dict)
+import Dict
 import Nexosis.Types.Data exposing (Data)
 
 

@@ -7,7 +7,7 @@ import Nexosis.Types.AggregationStrategy as Aggregate exposing (AggregationStrat
 import Nexosis.Types.Columns exposing (ColumnMetadata, ColumnStats, ColumnStatsDict, DataType(..), DistributionShape(..), Role(..))
 import Nexosis.Types.ImputationStrategy as Impute exposing (ImputationStrategy)
 import NexosisHelpers exposing (commaFormatInteger, formatFloatToString)
-import Time.ZonedDateTime exposing (ZonedDateTime)
+import Time.ZonedDateTime
 
 
 decodeColumnMetadata : Decoder (List ColumnMetadata)

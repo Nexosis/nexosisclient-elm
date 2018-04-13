@@ -1,9 +1,9 @@
 module Nexosis.Decoders.DistanceMetric exposing (decodeDistanceMetrics)
 
-import Json.Decode exposing (Decoder, dict, int, list, oneOf, string, succeed)
-import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Decode exposing (Decoder, int, string)
+import Json.Decode.Pipeline exposing (decode, required)
 import Nexosis.Decoders.Data exposing (decodeData)
-import Nexosis.Types.DistanceMetric exposing (DistanceMetrics, DistanceValue)
+import Nexosis.Types.DistanceMetric exposing (DistanceMetrics)
 
 
 decodeDistanceMetrics : Decoder DistanceMetrics

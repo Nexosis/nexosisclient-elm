@@ -7,9 +7,9 @@ module Nexosis.Api.Metrics exposing (Metric, get)
 -}
 
 import Http
-import HttpBuilder exposing (RequestBuilder, withExpectJson)
+import HttpBuilder exposing (withExpectJson)
 import Json.Decode exposing (Decoder, field, list, string)
-import Json.Decode.Pipeline exposing (decode, optional, required)
+import Json.Decode.Pipeline exposing (decode, required)
 import Nexosis exposing (ClientConfig, getBaseUrl, withAppHeader, withAuthorization)
 
 

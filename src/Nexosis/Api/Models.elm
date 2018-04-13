@@ -1,7 +1,7 @@
 module Nexosis.Api.Models exposing (delete, get, getOne, predict, predictRaw)
 
 import Http
-import HttpBuilder exposing (RequestBuilder, withExpect)
+import HttpBuilder
 import Nexosis exposing (ClientConfig, getBaseUrl)
 import Nexosis.Decoders.Models exposing (decodeModel, decodeModelList, decodePredictions)
 import Nexosis.Types.Models exposing (ModelData, ModelList, PredictionResult)

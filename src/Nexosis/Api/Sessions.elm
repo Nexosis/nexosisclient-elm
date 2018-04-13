@@ -1,19 +1,19 @@
 module Nexosis.Api.Sessions exposing (ForecastSessionRequest, ImpactSessionRequest, ModelSessionRequest, delete, get, getConfusionMatrix, getDistanceMetrics, getDistanceMetricsCsv, getForDataset, getOne, postForecast, postImpact, postModel, results, resultsCsv)
 
 import Http
-import HttpBuilder exposing (RequestBuilder, withExpect)
+import HttpBuilder
 import Json.Encode as Encode
-import Nexosis exposing (ClientConfig, getBaseUrl, withAppHeader, withAuthorization)
+import Nexosis exposing (ClientConfig, getBaseUrl)
 import Nexosis.Decoders.ConfusionMatrix exposing (decodeConfusionMatrix)
 import Nexosis.Decoders.DistanceMetric exposing (decodeDistanceMetrics)
 import Nexosis.Decoders.Session exposing (decodeSession, decodeSessionList, decodeSessionResults)
 import Nexosis.Encoders.Columns exposing (encodeColumnMetadataList)
 import Nexosis.Types.Columns exposing (ColumnMetadata)
-import Nexosis.Types.ConfusionMatrix exposing (..)
+import Nexosis.Types.ConfusionMatrix exposing (ConfusionMatrix)
 import Nexosis.Types.DataSet exposing (DataSetName, dataSetNameToString)
-import Nexosis.Types.DistanceMetric exposing (..)
+import Nexosis.Types.DistanceMetric exposing (DistanceMetrics)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
-import Nexosis.Types.Session exposing (..)
+import Nexosis.Types.Session exposing (SessionData)
 import NexosisHelpers exposing (SortParameters, addHeaders, sortParams)
 import Time.ZonedDateTime exposing (ZonedDateTime, toISO8601)
 

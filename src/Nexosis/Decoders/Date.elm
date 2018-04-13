@@ -1,6 +1,6 @@
 module Nexosis.Decoders.Date exposing (decodeDate)
 
-import Json.Decode as Decode exposing (Decoder, andThen, fail, string, succeed)
+import Json.Decode exposing (Decoder, andThen, fail, string, succeed)
 import Time.TimeZones exposing (etc_universal)
 import Time.ZonedDateTime exposing (ZonedDateTime, fromISO8601)
 

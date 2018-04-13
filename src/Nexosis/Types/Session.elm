@@ -1,11 +1,11 @@
 module Nexosis.Types.Session exposing (ResultInterval(..), SessionData, SessionList, SessionResults)
 
 import Dict exposing (Dict)
-import Nexosis.Types.Algorithm exposing (..)
+import Nexosis.Types.Algorithm exposing (Algorithm)
 import Nexosis.Types.Columns exposing (ColumnMetadata)
-import Nexosis.Types.Link exposing (..)
-import Nexosis.Types.Message exposing (..)
-import Nexosis.Types.PredictionDomain exposing (..)
+import Nexosis.Types.Link exposing (Link)
+import Nexosis.Types.Message exposing (Message)
+import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
 import Nexosis.Types.Status exposing (HistoryRecord, Status)
 import Time.ZonedDateTime exposing (ZonedDateTime)
 

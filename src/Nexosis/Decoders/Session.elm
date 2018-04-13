@@ -1,7 +1,6 @@
 module Nexosis.Decoders.Session exposing (decodeSession, decodeSessionList, decodeSessionResults)
 
-import Dict exposing (Dict)
-import Json.Decode as Decode exposing (Decoder, andThen, dict, fail, field, float, int, list, map2, string, succeed)
+import Json.Decode as Decode exposing (Decoder, andThen, fail, string, succeed)
 import Json.Decode.Pipeline exposing (decode, optional, required)
 import Nexosis.Decoders.Algorithm exposing (decodeAlgorithm)
 import Nexosis.Decoders.Columns exposing (decodeColumnMetadata)
@@ -11,14 +10,7 @@ import Nexosis.Decoders.Link exposing (decodeLink)
 import Nexosis.Decoders.Message exposing (decodeMessage)
 import Nexosis.Decoders.PredictionDomain exposing (decodePredictionDomain)
 import Nexosis.Decoders.Status exposing (decodeHistoryRecord, decodeStatus)
-import Nexosis.Types.Algorithm exposing (..)
-import Nexosis.Types.Columns exposing (ColumnMetadata)
-import Nexosis.Types.Link exposing (..)
-import Nexosis.Types.Message exposing (..)
-import Nexosis.Types.PredictionDomain exposing (..)
 import Nexosis.Types.Session exposing (ResultInterval(..), SessionData, SessionList, SessionResults)
-import Nexosis.Types.Status exposing (HistoryRecord, Status)
-import Time.ZonedDateTime exposing (ZonedDateTime)
 
 
 decodeSessionResults : Decode.Decoder SessionResults
