@@ -1,4 +1,4 @@
-module Nexosis.Metrics exposing (Metric, get)
+module Nexosis.Api.Metrics exposing (Metric, get)
 
 {-| Metrics
 

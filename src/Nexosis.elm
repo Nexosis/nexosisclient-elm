@@ -36,7 +36,7 @@ createConfigWithApiKey : String -> ClientConfig
 createConfigWithApiKey apiKey =
     ClientConfig
         { apiAccess = ApiKey (Key apiKey)
-        , baseUrl = "https://api.dev.nexosisdev.com/v1"
+        , baseUrl = "https://ml.nexosis.com/v1"
         , applicationName = Nothing
         }
 
@@ -47,7 +47,7 @@ createConfigWithToken : String -> ClientConfig
 createConfigWithToken token =
     ClientConfig
         { apiAccess = AccessToken (Token token)
-        , baseUrl = "https://api.dev.nexosisdev.com/v2"
+        , baseUrl = "https://ml.nexosis.com/v2"
         , applicationName = Nothing
         }
 
