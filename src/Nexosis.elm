@@ -1,12 +1,22 @@
-module Nexosis exposing (ClientConfig, createConfigWithToken, createConfigWithTokenOptions, getBaseUrl, withAppHeader, withAuthorization)
+module Nexosis exposing (ClientConfig, createConfigWithToken, createConfigWithTokenOptions, getBaseUrl)
 
 {-| Nexosis Api Client
 
-@docs ClientConfig, createConfigWithToken, withAuthorization, createConfigWithTokenOptions, withAppHeader, getBaseUrl
+Api Client for use with the [Nexosis Machine Learning Api](https://nexosis.com/). This package provides all of the Api endpoints and types for the request parameters
+and response results.
+
+
+# Configuration
+
+In order to make calls to the Api, you will need an Api key, which you will find on your [Nexosis account](https://account.nexosis.com).
+
+@docs createConfigWithApiKey, ClientConfig
+
+#
+
+@docs getBaseUrl
 
 -}
-
-import HttpBuilder exposing (RequestBuilder, withBearerToken, withHeader)
 
 
 {-| Creds and url.
@@ -80,32 +90,6 @@ createConfigWithApiKeyOptions { apiKey, baseUrl, applicationName } =
         , baseUrl = baseUrl
         , applicationName = applicationName
         }
-
-
-{-| Adds auth headers to an HttpBuilder pipeline
--}
-withAuthorization : ClientConfig -> RequestBuilder a -> RequestBuilder a
-withAuthorization (ClientConfig config) builder =
-    case config.apiAccess of
-        AccessToken (Token token) ->
-            builder |> withBearerToken token
-
-        ApiKey (Key key) ->
-            builder |> withHeader "api-key" key
-
-
-{-| Adds an application-name header, to help us distinguish where api calls are coming from
--}
-withAppHeader : ClientConfig -> RequestBuilder a -> RequestBuilder a
-withAppHeader (ClientConfig config) builder =
-    case config.applicationName of
-        Just name ->
-            builder
-                |> withHeader "application-name" name
-
-        Nothing ->
-            builder
-                |> withHeader "application-name" "nexosisclient-elm"
 
 
 {-| Gets the base url that requests will be sent to

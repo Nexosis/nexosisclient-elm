@@ -1,6 +1,6 @@
-module NexosisHelpers exposing (addHeaders, sortParams)
+module NexosisHelpers exposing (addHeaders, sortParams, withAppHeader, withAuthorization)
 
-import HttpBuilder exposing (RequestBuilder)
+import HttpBuilder exposing (RequestBuilder, withBearerToken, withHeader)
 import Nexosis exposing (ClientConfig, withAppHeader, withAuthorization)
 import Nexosis.Types.SortParameters exposing (SortDirection(..), SortParameters)
 
@@ -20,3 +20,29 @@ sortParams { sortName, direction } =
             "desc"
       )
     ]
+
+
+{-| Adds auth headers to an HttpBuilder pipeline
+-}
+withAuthorization : ClientConfig -> RequestBuilder a -> RequestBuilder a
+withAuthorization (ClientConfig config) builder =
+    case config.apiAccess of
+        AccessToken (Token token) ->
+            builder |> withBearerToken token
+
+        ApiKey (Key key) ->
+            builder |> withHeader "api-key" key
+
+
+{-| Adds an application-name header, to help us distinguish where api calls are coming from
+-}
+withAppHeader : ClientConfig -> RequestBuilder a -> RequestBuilder a
+withAppHeader (ClientConfig config) builder =
+    case config.applicationName of
+        Just name ->
+            builder
+                |> withHeader "application-name" name
+
+        Nothing ->
+            builder
+                |> withHeader "application-name" "nexosisclient-elm"

@@ -9,7 +9,7 @@ import Nexosis.Decoders.Date exposing (decodeDate)
 import Nexosis.Decoders.Link exposing (decodeLink)
 import Nexosis.Decoders.Message exposing (decodeMessage)
 import Nexosis.Decoders.PredictionDomain exposing (decodePredictionDomain)
-import Nexosis.Types.Models exposing (ModelData, ModelList, PredictionResult)
+import Nexosis.Types.Model exposing (ModelData, ModelList, PredictionResult)
 
 
 decodeModelList : Decoder ModelList

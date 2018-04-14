@@ -1,4 +1,4 @@
-module Nexosis.Types.Models exposing (ModelData, ModelList, PredictionResult)
+module Nexosis.Types.Model exposing (ModelData, ModelList, PredictionResult)
 
 import Dict exposing (Dict)
 import Nexosis.Types.Algorithm exposing (Algorithm)

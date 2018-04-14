@@ -8,7 +8,27 @@
     ],
     "exposed-modules": [
         "Nexosis",
-        "Nexosis.Metrics"
+        "Nexosis.Api.Data",
+        "Nexosis.Api.Imports",
+        "Nexosis.Api.Metrics",
+        "Nexosis.Api.Models",
+        "Nexosis.Api.Sessions",
+        "Nexosis.Types.AggregationStrategy",
+        "Nexosis.Types.Algorithm",
+        "Nexosis.Types.Columns",
+        "Nexosis.Types.ConfusionMatrix",
+        "Nexosis.Types.Data",
+        "Nexosis.Types.DataSet",
+        "Nexosis.Types.DistanceMetric",
+        "Nexosis.Types.Import",
+        "Nexosis.Types.ImputationStrategy",
+        "Nexosis.Types.Link",
+        "Nexosis.Types.Message",
+        "Nexosis.Types.Model",
+        "Nexosis.Types.PredictionDomain",
+        "Nexosis.Types.Session",
+        "Nexosis.Types.SortParameters",
+        "Nexosis.Types.Status"
     ],
     "dependencies": {
         "NoRedInk/elm-decode-pipeline": "3.0.0 <= v < 4.0.0",

@@ -10,7 +10,8 @@ import Http
 import HttpBuilder exposing (withExpectJson)
 import Json.Decode exposing (Decoder, field, list, string)
 import Json.Decode.Pipeline exposing (decode, required)
-import Nexosis exposing (ClientConfig, getBaseUrl, withAppHeader, withAuthorization)
+import Nexosis exposing (ClientConfig, getBaseUrl)
+import NexosisHelpers exposing (addHeaders)
 
 
 {-| Metrics type
@@ -29,8 +30,7 @@ get config =
     (getBaseUrl config ++ "/metrics")
         |> HttpBuilder.get
         |> withExpectJson decodeMetricList
-        |> withAuthorization config
-        |> withAppHeader config
+        |> addHeaders config
         |> HttpBuilder.toRequest
 
 

@@ -4,7 +4,7 @@ import Http
 import HttpBuilder
 import Nexosis exposing (ClientConfig, getBaseUrl)
 import Nexosis.Decoders.Models exposing (decodeModel, decodeModelList, decodePredictions)
-import Nexosis.Types.Models exposing (ModelData, ModelList, PredictionResult)
+import Nexosis.Types.Model exposing (ModelData, ModelList, PredictionResult)
 import Nexosis.Types.SortParameters exposing (SortParameters)
 import NexosisHelpers exposing (addHeaders, sortParams)
 
