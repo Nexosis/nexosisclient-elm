@@ -1,4 +1,10 @@
-module Nexosis.Decoders.Columns exposing (decodeColumnMetadata, decodeColumnStatsDict, distributionDecoder)
+module Nexosis.Decoders.Columns exposing (decodeColumnMetadata, decodeColumnStatsDict)
+
+{-| Decoders for working with `ColumnMetadata`.
+
+@docs decodeColumnMetadata, decodeColumnStatsDict
+
+-}
 
 import Json.Decode as Decode exposing (Decoder, andThen, dict, fail, float, int, list, string, succeed)
 import Json.Decode.Pipeline exposing (decode, optional, required)
@@ -8,6 +14,7 @@ import Nexosis.Types.Columns exposing (ColumnMetadata, ColumnStats, ColumnStatsD
 import Nexosis.Types.ImputationStrategy as Impute exposing (ImputationStrategy)
 
 
+{-| -}
 decodeColumnMetadata : Decoder (List ColumnMetadata)
 decodeColumnMetadata =
     decode ColumnMetadata
@@ -156,6 +163,7 @@ distributionDecoder =
     list decodeDistributionItem
 
 
+{-| -}
 decodeColumnStatsDict : Decoder ColumnStatsDict
 decodeColumnStatsDict =
     dict decodeColumnStats

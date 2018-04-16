@@ -28,7 +28,8 @@
         "Nexosis.Types.PredictionDomain",
         "Nexosis.Types.Session",
         "Nexosis.Types.SortParameters",
-        "Nexosis.Types.Status"
+        "Nexosis.Types.Status",
+        "Nexosis.Decoders.Columns"
     ],
     "dependencies": {
         "NoRedInk/elm-decode-pipeline": "3.0.0 <= v < 4.0.0",
