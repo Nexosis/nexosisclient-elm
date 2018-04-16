@@ -4,13 +4,36 @@
     "repository": "https://github.com/Nexosis/nexosisclient-elm.git",
     "license": "Apache-2.0",
     "source-directories": [
-        "src/"
+        "src"
     ],
     "exposed-modules": [
-        "Nexosis"
+        "Nexosis",
+        "Nexosis.Api.Data",
+        "Nexosis.Api.Imports",
+        "Nexosis.Api.Metrics",
+        "Nexosis.Api.Models",
+        "Nexosis.Api.Sessions",
+        "Nexosis.Types.AggregationStrategy",
+        "Nexosis.Types.Algorithm",
+        "Nexosis.Types.Columns",
+        "Nexosis.Types.ConfusionMatrix",
+        "Nexosis.Types.Data",
+        "Nexosis.Types.DataSet",
+        "Nexosis.Types.DistanceMetric",
+        "Nexosis.Types.Import",
+        "Nexosis.Types.ImputationStrategy",
+        "Nexosis.Types.Link",
+        "Nexosis.Types.Message",
+        "Nexosis.Types.Model",
+        "Nexosis.Types.PredictionDomain",
+        "Nexosis.Types.Session",
+        "Nexosis.Types.SortParameters",
+        "Nexosis.Types.Status",
+        "Nexosis.Decoders.Columns"
     ],
     "dependencies": {
         "NoRedInk/elm-decode-pipeline": "3.0.0 <= v < 4.0.0",
+        "elm-community/elm-time": "1.0.8 <= v < 1.0.11",
         "elm-community/json-extra": "2.7.0 <= v < 3.0.0",
         "elm-lang/core": "5.1.1 <= v < 6.0.0",
         "elm-lang/http": "1.0.0 <= v < 2.0.0",
