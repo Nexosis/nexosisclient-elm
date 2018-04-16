@@ -1,6 +1,7 @@
 module Nexosis.Api.Metrics exposing (Metric, get)
 
-{-| Metrics
+{-| This endpoint returns static information about the metrics that the Api will calculate.
+This is really just to provide up to date text descriptions and names for metrics that may be shown to a user.
 
 @docs get, Metric
 
@@ -14,7 +15,7 @@ import Nexosis exposing (ClientConfig, getBaseUrl)
 import NexosisHelpers exposing (addHeaders)
 
 
-{-| Metrics type
+{-| Metrics information.
 -}
 type alias Metric =
     { key : String
@@ -23,7 +24,7 @@ type alias Metric =
     }
 
 
-{-| Get
+{-| GET a list of `Metric` definitions that are reported by the Api.
 -}
 get : ClientConfig -> Http.Request (List Metric)
 get config =

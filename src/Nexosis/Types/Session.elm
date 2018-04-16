@@ -1,5 +1,15 @@
 module Nexosis.Types.Session exposing (ResultInterval(..), SessionData, SessionList, SessionResults)
 
+{-| A `Session` is the representation of the long running processing done when building a machine learning model.
+
+New `Sessions` can be requested, and when completed, results can be retrieved, and the generated machine learning `Models` can be called on to make predictions on new data.
+
+Refer to our [documentation on Sessions](https://docs.nexosis.com/guides/sessions) for more information.
+
+@docs SessionData, SessionList, SessionResults, ResultInterval
+
+-}
+
 import Dict exposing (Dict)
 import Nexosis.Types.Algorithm exposing (Algorithm)
 import Nexosis.Types.Columns exposing (ColumnMetadata)
@@ -10,6 +20,9 @@ import Nexosis.Types.Status exposing (HistoryRecord, Status)
 import Time.ZonedDateTime exposing (ZonedDateTime)
 
 
+{-| This is the information about a specific `Session`. Some values may not be available until the
+`Session` has completed successfully.
+-}
 type alias SessionData =
     { sessionId : String
     , status : Status
@@ -32,12 +45,16 @@ type alias SessionData =
     }
 
 
+{-| The results of a Session. The information returned will vary based on the type of `Session` that was run.
+-}
 type alias SessionResults =
     { metrics : Dict String Float
     , data : List (Dict String String)
     }
 
 
+{-| A `List` of `SessionData`, with paging information.
+-}
 type alias SessionList =
     { items : List SessionData
     , pageNumber : Int
@@ -47,6 +64,8 @@ type alias SessionList =
     }
 
 
+{-| The interval at which to calculate results when requesting a `Forecast` or `Impact` session.
+-}
 type ResultInterval
     = Hour
     | Day

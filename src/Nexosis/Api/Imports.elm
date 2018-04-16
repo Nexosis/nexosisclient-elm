@@ -1,5 +1,21 @@
 module Nexosis.Api.Imports exposing (PostAzureRequest, PostS3Request, PostUrlRequest, get, postAzure, postS3, postUrl)
 
+{-| Functions for interacting with the `/imports` endpoint.
+
+
+## GET
+
+@docs get
+
+
+## POST
+
+Data can be imported from a public facing Url, an S3 bucket, or an Azure blob. Use the specific function and request to start an file import.
+
+@docs postUrl, PostUrlRequest, postS3, PostS3Request, postAzure, PostAzureRequest
+
+-}
+
 import Http
 import HttpBuilder exposing (withExpectJson)
 import Json.Encode exposing (encode)
@@ -10,6 +26,8 @@ import Nexosis.Types.Import exposing (ImportDetail)
 import NexosisHelpers exposing (addHeaders)
 
 
+{-| The name of the `DataSet` to import data to, the publicly accessible Url to import from, and an optional unique key column.
+-}
 type alias PostUrlRequest =
     { dataSetName : String
     , url : String
@@ -17,6 +35,8 @@ type alias PostUrlRequest =
     }
 
 
+{-| The name of the `DataSet` to import data to, all of the details needed to download the data from S3.
+-}
 type alias PostS3Request =
     { dataSetName : String
     , bucket : String
@@ -27,6 +47,8 @@ type alias PostS3Request =
     }
 
 
+{-| The name of the `DataSet` to import data to, all of the details needed to download the data from Azure.
+-}
 type alias PostAzureRequest =
     { dataSetName : String
     , connectionString : String
@@ -35,6 +57,8 @@ type alias PostAzureRequest =
     }
 
 
+{-| POST to start a data `Import` from a public Url.
+-}
 postUrl : ClientConfig -> PostUrlRequest -> Http.Request ImportDetail
 postUrl config { dataSetName, url, key } =
     (getBaseUrl config ++ "/imports/url")
@@ -45,6 +69,8 @@ postUrl config { dataSetName, url, key } =
         |> HttpBuilder.toRequest
 
 
+{-| POST to start a data `Import` from S3.
+-}
 postS3 : ClientConfig -> PostS3Request -> Http.Request ImportDetail
 postS3 config request =
     (getBaseUrl config ++ "/imports/s3")
@@ -55,6 +81,8 @@ postS3 config request =
         |> HttpBuilder.toRequest
 
 
+{-| POST to start a data `Import` from Azure.
+-}
 postAzure : ClientConfig -> PostAzureRequest -> Http.Request ImportDetail
 postAzure config request =
     (getBaseUrl config ++ "/imports/azure")
@@ -65,6 +93,8 @@ postAzure config request =
         |> HttpBuilder.toRequest
 
 
+{-| GET a specific `Import` by id. Useful for checking the `Status`.
+-}
 get : ClientConfig -> String -> Http.Request ImportDetail
 get config importId =
     (getBaseUrl config ++ "/imports/" ++ importId)

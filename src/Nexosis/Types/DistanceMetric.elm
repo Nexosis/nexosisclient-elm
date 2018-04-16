@@ -1,9 +1,17 @@
 module Nexosis.Types.DistanceMetric exposing (DistanceMetrics, DistanceValue, fromDistanceMetrics)
 
+{-| Distance metrics are calculated for Anomaly Detection `Sessions`. This is the Mahalanobis Distance of the items in the `DataSet`.
+
+@docs DistanceMetrics, DistanceValue, fromDistanceMetrics
+
+-}
+
 import Dict
 import Nexosis.Types.Data exposing (Data)
 
 
+{-| Distance Metric information for the `DataSet`, as calculated during the `Session`.
+-}
 type alias DistanceMetrics =
     { dataSourceName : String
     , modelId : String
@@ -17,12 +25,16 @@ type alias DistanceMetrics =
     }
 
 
+{-| Distance an Anomaly values.
+-}
 type alias DistanceValue =
     { anomaly : Float
     , distance : Float
     }
 
 
+{-| Convenience function to go from a full `DistanceMetrics` response to just a list of `DistanceValue`.
+-}
 fromDistanceMetrics : DistanceMetrics -> List DistanceValue
 fromDistanceMetrics metrics =
     let
