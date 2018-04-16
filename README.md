@@ -19,7 +19,7 @@ type Msg
     = DataSetListResponse (Result Http.Error Nexosis.Types.DataSet.DataSetList)
 
 
-loadDataSetList : () -> Cmd Msg
+loadDataSetList : Cmd Msg
 loadDataSetList =
     let
         config =
