@@ -2,6 +2,8 @@
 
 This package provides functions which allow you to easily call the Nexosis Api.  It allows you to interact upload data, run machine learning algorithms, and make predictions on new data using a trained model.
 
+[![Build Status](https://travis-ci.org/Nexosis/nexosisclient-elm.svg?branch=master)](https://travis-ci.org/Nexosis/nexosisclient-elm)
+
 ## Basic usage
 
 You will need to [register an account](https://nexosis.com) and get an Api key.  This will allow you to create a `ClientConfig`.
