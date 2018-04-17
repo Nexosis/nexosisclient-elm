@@ -22,7 +22,7 @@ import Nexosis.Types.Data exposing (Data)
 import Time.ZonedDateTime exposing (ZonedDateTime)
 
 
-{-| Returned from the `/data/{dataSetName}` endpoint called by [Nexosis.Api.Data.getRetrieveDetail](Nexosis.Api.Data#getRetrieveDetail)
+{-| Returned from the `/data/{dataSetName}` endpoint called by [Nexosis.Api.Data.getRetrieveDetail](Nexosis-Api-Data#getRetrieveDetail)
 Details of the `Dataset`, a List of data, and paging information for the data.
 -}
 type alias DataSetData =
@@ -41,7 +41,7 @@ type alias DataSetData =
     }
 
 
-{-| Returned from `/data` endpoint called by [Nexosis.Api.Data.get](Nexosis.Api.Data#get)
+{-| Returned from `/data` endpoint called by [Nexosis.Api.Data.get](Nexosis-Api-Data#get)
 A List of [DataSet](#DataSet), with paging information.
 -}
 type alias DataSetList =
@@ -66,7 +66,7 @@ type alias DataSet =
     }
 
 
-{-| Stats about a [`DataSet`](#DataSet). Returned from `/data/stats` endpoint called by [`Nexosis.Api.Data.getStats`](Nexosis.Api.Data#getStats)
+{-| Stats about a [`DataSet`](#DataSet). Returned from `/data/stats` endpoint called by [`Nexosis.Api.Data.getStats`](Nexosis-Api-Data#getStats)
 -}
 type alias DataSetStats =
     { dataSetName : String
