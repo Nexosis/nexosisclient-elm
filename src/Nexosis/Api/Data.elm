@@ -1,4 +1,4 @@
-module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, delete, get, getDataByDateRange, getRetrieveDetail, getStats, getStatsForColumn, put, updateMetadata)
+module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, delete, get, getDataByDateRange, getRetrieveDetail, getStats, getStatsForColumn, put, setMissingValues, updateMetadata)
 
 {-| Functions for interacting with the `/data` endpoint.
 
@@ -10,7 +10,7 @@ module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, d
 
 ## PUT
 
-@docs put, updateMetadata, MetadataUpdateRequest, createDataSetWithKey
+@docs put, updateMetadata, MetadataUpdateRequest, createDataSetWithKey, setMissingValues
 
 
 ## DELETE
