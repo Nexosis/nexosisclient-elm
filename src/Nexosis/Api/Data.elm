@@ -1,4 +1,4 @@
-module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, delete, get, getDataByDateRange, getRetrieveDetail, getStats, getStatsForColumn, put, updateMetadata)
+module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, delete, get, getDataByDateRange, getRetrieveDetail, getStats, getStatsForColumn, put, setMissingValues, updateMetadata)
 
 {-| Functions for interacting with the `/data` endpoint.
 
@@ -10,7 +10,7 @@ module Nexosis.Api.Data exposing (MetadataUpdateRequest, createDataSetWithKey, d
 
 ## PUT
 
-@docs put, updateMetadata, MetadataUpdateRequest, createDataSetWithKey
+@docs put, updateMetadata, MetadataUpdateRequest, createDataSetWithKey, setMissingValues
 
 
 ## DELETE
@@ -209,3 +209,24 @@ dataTypeToString dataType =
         "numericMeasure"
     else
         toString dataType
+
+
+{-| PUT to set what values are considered 'missing' in a `DataSet`. A list of values like "N/A" or "null" can be set, and will be treated as missing values.
+-}
+setMissingValues : ClientConfig -> String -> List String -> Http.Request ()
+setMissingValues config dataSetName missingValues =
+    let
+        missingValuesBody =
+            Json.Encode.object [ ( "missingValues", encodeMissingValues missingValues ) ]
+    in
+    (getBaseUrl config ++ "/data/" ++ Http.encodeUri dataSetName)
+        |> HttpBuilder.put
+        |> addHeaders config
+        |> HttpBuilder.withJsonBody missingValuesBody
+        |> HttpBuilder.toRequest
+
+
+encodeMissingValues : List String -> Json.Encode.Value
+encodeMissingValues missingValues =
+    Json.Encode.list <|
+        List.map Json.Encode.string missingValues
