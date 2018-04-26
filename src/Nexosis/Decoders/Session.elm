@@ -41,6 +41,7 @@ decodeSession =
         |> required "links" (Decode.list decodeLink)
         |> optional "modelId" (Decode.map Just string) Nothing
         |> optional "algorithm" (Decode.map Just decodeAlgorithm) Nothing
+        |> optional "approximateCompletionPercentage" Decode.int 0
 
 
 decodeSessionList : Decoder SessionList

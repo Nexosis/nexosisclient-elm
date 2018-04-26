@@ -42,6 +42,7 @@ type alias SessionData =
     , links : List Link
     , modelId : Maybe String
     , algorithm : Maybe Algorithm
+    , approximateCompletionPercentage : Int
     }
 
 
