@@ -171,6 +171,7 @@ type alias ModelSessionRequest =
     { name : Maybe String
     , dataSourceName : DataSetName
     , columns : List ColumnMetadata
+    , missingValues : List String
     , predictionDomain : PredictionDomain
     , balance : Maybe Bool
     , containsAnomalies : Maybe Bool
@@ -199,6 +200,7 @@ encodeModelSessionRequest sessionRequest =
         [ ( "dataSourceName", Encode.string <| dataSetNameToString <| sessionRequest.dataSourceName )
         , ( "name", encodeName sessionRequest.name )
         , ( "columns", encodeColumnMetadataList <| sessionRequest.columns )
+        , ( "missingValues", Encode.list <| List.map Encode.string sessionRequest.missingValues )
         , ( "predictionDomain", Encode.string <| toString <| sessionRequest.predictionDomain )
         , ( "extraParameters", encodeExtraParameters <| sessionRequest )
         ]
@@ -211,6 +213,7 @@ type alias ForecastSessionRequest =
     { name : Maybe String
     , dataSourceName : DataSetName
     , columns : List ColumnMetadata
+    , missingValues : List String
     , dates :
         { startDate : ZonedDateTime
         , endDate : ZonedDateTime
@@ -241,6 +244,7 @@ encodeForecastSessionRequest sessionRequest =
         [ ( "dataSourceName", Encode.string <| dataSetNameToString <| sessionRequest.dataSourceName )
         , ( "name", encodeName sessionRequest.name )
         , ( "columns", encodeColumnMetadataList <| sessionRequest.columns )
+        , ( "missingValues", Encode.list <| List.map Encode.string sessionRequest.missingValues )
         , ( "startDate", Encode.string <| toISO8601 <| sessionRequest.dates.startDate )
         , ( "endDate", Encode.string <| toISO8601 <| sessionRequest.dates.endDate )
         , ( "resultInterval", Encode.string <| toString <| sessionRequest.resultInterval )
@@ -254,6 +258,7 @@ type alias ImpactSessionRequest =
     { name : Maybe String
     , dataSourceName : DataSetName
     , columns : List ColumnMetadata
+    , missingValues : List String
     , dates :
         { startDate : ZonedDateTime
         , endDate : ZonedDateTime
@@ -285,6 +290,7 @@ encodeImpactSessionRequest sessionRequest =
         [ ( "dataSourceName", Encode.string <| dataSetNameToString <| sessionRequest.dataSourceName )
         , ( "name", encodeName sessionRequest.name )
         , ( "columns", encodeColumnMetadataList <| sessionRequest.columns )
+        , ( "missingValues", Encode.list <| List.map Encode.string sessionRequest.missingValues )
         , ( "startDate", Encode.string <| toISO8601 <| sessionRequest.dates.startDate )
         , ( "endDate", Encode.string <| toISO8601 <| sessionRequest.dates.endDate )
         , ( "eventName", Encode.string <| sessionRequest.eventName )
