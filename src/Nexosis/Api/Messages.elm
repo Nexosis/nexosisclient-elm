@@ -51,4 +51,5 @@ get config query =
             |> HttpBuilder.get
             |> withExpectJson decodeMessageList
             |> addHeaders config
+            |> HttpBuilder.withQueryParams params
             |> HttpBuilder.toRequest
