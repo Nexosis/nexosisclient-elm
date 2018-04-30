@@ -43,6 +43,7 @@ decodeDataSetData =
         |> optional "dataSetSize" Decode.int 0
         |> required "isTimeSeries" Decode.bool
         |> required "columns" decodeColumnMetadata
+        |> optional "missingValues" (Decode.list Decode.string) []
         |> required "data" decodeData
         |> required "pageNumber" Decode.int
         |> required "totalPages" Decode.int
