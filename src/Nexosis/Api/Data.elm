@@ -28,7 +28,7 @@ import Nexosis.Encoders.Columns exposing (encodeColumnMetadataList, encodeKeyCol
 import Nexosis.Types.Columns exposing (ColumnMetadata, DataType(..))
 import Nexosis.Types.DataSet exposing (DataSetData, DataSetList, DataSetName, DataSetStats, dataSetNameToString)
 import Nexosis.Types.SortParameters exposing (SortDirection(..), SortParameters)
-import NexosisHelpers exposing (addHeaders, sortParams)
+import NexosisHelpers exposing (addHeaders, pageParams, sortParams)
 import Set
 
 
@@ -140,13 +140,6 @@ put config name content contentType =
         |> HttpBuilder.withBody (Http.stringBody contentType content)
         |> addHeaders config
         |> HttpBuilder.toRequest
-
-
-pageParams : Int -> Int -> List ( String, String )
-pageParams page pageSize =
-    [ ( "page", page |> toString )
-    , ( "pageSize", pageSize |> toString )
-    ]
 
 
 dateParams : Maybe ( String, String ) -> List ( String, String )

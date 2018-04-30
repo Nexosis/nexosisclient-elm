@@ -54,7 +54,7 @@ import Nexosis.Types.DistanceMetric exposing (DistanceMetrics)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
 import Nexosis.Types.Session exposing (ResultInterval, SessionData, SessionList, SessionResults)
 import Nexosis.Types.SortParameters exposing (SortParameters)
-import NexosisHelpers exposing (addHeaders, sortParams)
+import NexosisHelpers exposing (addHeaders, pageParams, sortParams)
 import Time.ZonedDateTime exposing (ZonedDateTime, toISO8601)
 
 
@@ -102,13 +102,6 @@ resultsCsv config sessionId =
         |> HttpBuilder.withQueryParams [ ( "pageSize", "1000" ) ]
         |> addHeaders config
         |> HttpBuilder.toRequest
-
-
-pageParams : Int -> Int -> List ( String, String )
-pageParams page pageSize =
-    [ ( "page", page |> toString )
-    , ( "pageSize", pageSize |> toString )
-    ]
 
 
 {-| GET a Confusion Matrix generated from the results of a `Classification` `Session`.

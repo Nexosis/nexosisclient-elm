@@ -29,7 +29,7 @@ import Nexosis exposing (ClientConfig, getBaseUrl)
 import Nexosis.Decoders.Models exposing (decodeModel, decodeModelList, decodePredictions)
 import Nexosis.Types.Model exposing (ModelData, ModelList, PredictionResult)
 import Nexosis.Types.SortParameters exposing (SortParameters)
-import NexosisHelpers exposing (addHeaders, sortParams)
+import NexosisHelpers exposing (addHeaders, pageParams, sortParams)
 
 
 {-| GET a listing of `Models`, with page limits and sorting information.
@@ -47,13 +47,6 @@ get config page pageSize sorting =
         |> HttpBuilder.withQueryParams params
         |> addHeaders config
         |> HttpBuilder.toRequest
-
-
-pageParams : Int -> Int -> List ( String, String )
-pageParams page pageSize =
-    [ ( "page", page |> toString )
-    , ( "pageSize", pageSize |> toString )
-    ]
 
 
 {-| DELETE a single `Model`.

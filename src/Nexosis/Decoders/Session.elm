@@ -7,7 +7,7 @@ import Nexosis.Decoders.Columns exposing (decodeColumnMetadata)
 import Nexosis.Decoders.Data exposing (decodeData)
 import Nexosis.Decoders.Date exposing (decodeDate)
 import Nexosis.Decoders.Link exposing (decodeLink)
-import Nexosis.Decoders.Message exposing (decodeMessage)
+import Nexosis.Decoders.Message exposing (decodeObjectMessage)
 import Nexosis.Decoders.PredictionDomain exposing (decodePredictionDomain)
 import Nexosis.Decoders.Status exposing (decodeHistoryRecord, decodeStatus)
 import Nexosis.Types.Session exposing (ResultInterval(..), SessionData, SessionList, SessionResults)
@@ -34,7 +34,7 @@ decodeSession =
         |> required "requestedDate" decodeDate
         |> required "statusHistory" (Decode.list decodeHistoryRecord)
         |> required "extraParameters" (Decode.dict (Decode.oneOf [ Decode.string, Decode.bool |> Decode.andThen (\b -> succeed (toString b)) ]))
-        |> required "messages" (Decode.list decodeMessage)
+        |> required "messages" (Decode.list decodeObjectMessage)
         |> required "name" Decode.string
         |> required "dataSourceName" Decode.string
         |> optional "targetColumn" (Decode.map Just string) Nothing

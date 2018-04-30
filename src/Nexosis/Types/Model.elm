@@ -14,7 +14,7 @@ import Dict exposing (Dict)
 import Nexosis.Types.Algorithm exposing (Algorithm)
 import Nexosis.Types.Columns exposing (ColumnMetadata)
 import Nexosis.Types.Link exposing (Link)
-import Nexosis.Types.Message exposing (Message)
+import Nexosis.Types.Message exposing (ObjectMessage)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
 import Time.ZonedDateTime exposing (ZonedDateTime)
 
@@ -52,5 +52,5 @@ type alias ModelList =
 -}
 type alias PredictionResult =
     { data : List (Dict String String)
-    , messages : List Message
+    , messages : List ObjectMessage
     }
