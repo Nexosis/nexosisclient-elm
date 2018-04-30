@@ -30,6 +30,7 @@ type alias DataSetData =
     , dataSetSize : Int
     , isTimeSeries : Bool
     , columns : List ColumnMetadata
+    , missingValues : List String
     , data : Data
     , pageNumber : Int
     , totalPages : Int
