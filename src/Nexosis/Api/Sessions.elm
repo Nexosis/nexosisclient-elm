@@ -54,7 +54,7 @@ import Nexosis.Types.DistanceMetric exposing (DistanceMetrics)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
 import Nexosis.Types.Session exposing (ResultInterval, SessionData, SessionList, SessionResults)
 import Nexosis.Types.SortParameters exposing (SortParameters)
-import NexosisHelpers exposing (addHeaders, sortParams, pageParams)
+import NexosisHelpers exposing (addHeaders, pageParams, sortParams)
 import Time.ZonedDateTime exposing (ZonedDateTime, toISO8601)
 
 
@@ -67,12 +67,12 @@ get config page pageSize sorting =
             pageParams page pageSize
                 ++ sortParams sorting
     in
-        (getBaseUrl config ++ "/sessions")
-            |> HttpBuilder.get
-            |> HttpBuilder.withExpectJson decodeSessionList
-            |> HttpBuilder.withQueryParams params
-            |> addHeaders config
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions")
+        |> HttpBuilder.get
+        |> HttpBuilder.withExpectJson decodeSessionList
+        |> HttpBuilder.withQueryParams params
+        |> addHeaders config
+        |> HttpBuilder.toRequest
 
 
 {-| GET results of a completed `Session`.
@@ -83,12 +83,12 @@ results config sessionId page pageSize =
         params =
             pageParams page pageSize
     in
-        (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results")
-            |> HttpBuilder.get
-            |> HttpBuilder.withExpectJson decodeSessionResults
-            |> HttpBuilder.withQueryParams params
-            |> addHeaders config
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results")
+        |> HttpBuilder.get
+        |> HttpBuilder.withExpectJson decodeSessionResults
+        |> HttpBuilder.withQueryParams params
+        |> addHeaders config
+        |> HttpBuilder.toRequest
 
 
 {-| GET the results as a CSV file, in a `String`.
@@ -112,12 +112,12 @@ getConfusionMatrix config sessionId page pageSize =
         params =
             pageParams page pageSize
     in
-        (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results/confusionmatrix")
-            |> HttpBuilder.get
-            |> HttpBuilder.withExpectJson decodeConfusionMatrix
-            |> HttpBuilder.withQueryParams params
-            |> addHeaders config
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results/confusionmatrix")
+        |> HttpBuilder.get
+        |> HttpBuilder.withExpectJson decodeConfusionMatrix
+        |> HttpBuilder.withQueryParams params
+        |> addHeaders config
+        |> HttpBuilder.toRequest
 
 
 {-| GET a list of `Session` filtered by the `DataSetName`.
@@ -128,12 +128,12 @@ getForDataset config dataSetName =
         params =
             [ ( "dataSetName", dataSetNameToString dataSetName ) ]
     in
-        (getBaseUrl config ++ "/sessions")
-            |> HttpBuilder.get
-            |> HttpBuilder.withExpectJson decodeSessionList
-            |> HttpBuilder.withQueryParams params
-            |> addHeaders config
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions")
+        |> HttpBuilder.get
+        |> HttpBuilder.withExpectJson decodeSessionList
+        |> HttpBuilder.withQueryParams params
+        |> addHeaders config
+        |> HttpBuilder.toRequest
 
 
 {-| DELETE a single `Session`.
@@ -179,12 +179,12 @@ postModel config sessionRequest =
         requestBody =
             encodeModelSessionRequest sessionRequest
     in
-        (getBaseUrl config ++ "/sessions/model")
-            |> HttpBuilder.post
-            |> HttpBuilder.withExpectJson decodeSession
-            |> addHeaders config
-            |> HttpBuilder.withJsonBody requestBody
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/model")
+        |> HttpBuilder.post
+        |> HttpBuilder.withExpectJson decodeSession
+        |> addHeaders config
+        |> HttpBuilder.withJsonBody requestBody
+        |> HttpBuilder.toRequest
 
 
 encodeModelSessionRequest : ModelSessionRequest -> Encode.Value
@@ -223,12 +223,12 @@ postForecast config sessionRequest =
         requestBody =
             encodeForecastSessionRequest sessionRequest
     in
-        (getBaseUrl config ++ "/sessions/forecast")
-            |> HttpBuilder.post
-            |> HttpBuilder.withExpectJson decodeSession
-            |> addHeaders config
-            |> HttpBuilder.withJsonBody requestBody
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/forecast")
+        |> HttpBuilder.post
+        |> HttpBuilder.withExpectJson decodeSession
+        |> addHeaders config
+        |> HttpBuilder.withJsonBody requestBody
+        |> HttpBuilder.toRequest
 
 
 encodeForecastSessionRequest : ForecastSessionRequest -> Encode.Value
@@ -269,12 +269,12 @@ postImpact config sessionRequest =
         requestBody =
             encodeImpactSessionRequest sessionRequest
     in
-        (getBaseUrl config ++ "/sessions/impact")
-            |> HttpBuilder.post
-            |> HttpBuilder.withExpectJson decodeSession
-            |> addHeaders config
-            |> HttpBuilder.withJsonBody requestBody
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/impact")
+        |> HttpBuilder.post
+        |> HttpBuilder.withExpectJson decodeSession
+        |> addHeaders config
+        |> HttpBuilder.withJsonBody requestBody
+        |> HttpBuilder.toRequest
 
 
 encodeImpactSessionRequest : ImpactSessionRequest -> Encode.Value
@@ -311,10 +311,10 @@ encodeExtraParameters sessionRequest =
                 |> Maybe.map Encode.bool
                 |> Maybe.withDefault Encode.null
     in
-        Encode.object
-            [ ( "balance", balance )
-            , ( "containsAnomalies", anomalies )
-            ]
+    Encode.object
+        [ ( "balance", balance )
+        , ( "containsAnomalies", anomalies )
+        ]
 
 
 {-| GET the Mahalanobis Distances calculated by an Anomaly Detection `Session` as a CSV String.
@@ -325,13 +325,13 @@ getDistanceMetricsCsv config sessionId page pageSize =
         params =
             pageParams page pageSize
     in
-        (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results/mahalanobisdistances")
-            |> HttpBuilder.get
-            |> HttpBuilder.withExpectString
-            |> HttpBuilder.withHeader "Accept" "text/csv"
-            |> HttpBuilder.withQueryParams params
-            |> addHeaders config
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results/mahalanobisdistances")
+        |> HttpBuilder.get
+        |> HttpBuilder.withExpectString
+        |> HttpBuilder.withHeader "Accept" "text/csv"
+        |> HttpBuilder.withQueryParams params
+        |> addHeaders config
+        |> HttpBuilder.toRequest
 
 
 {-| GET the Mahalanobis Distances calculated by an Anomaly Detection `Session`.
@@ -342,9 +342,9 @@ getDistanceMetrics config sessionId page pageSize =
         params =
             pageParams page pageSize
     in
-        (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results/mahalanobisdistances")
-            |> HttpBuilder.get
-            |> HttpBuilder.withExpectJson decodeDistanceMetrics
-            |> HttpBuilder.withQueryParams params
-            |> addHeaders config
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/sessions/" ++ sessionId ++ "/results/mahalanobisdistances")
+        |> HttpBuilder.get
+        |> HttpBuilder.withExpectJson decodeDistanceMetrics
+        |> HttpBuilder.withQueryParams params
+        |> addHeaders config
+        |> HttpBuilder.toRequest

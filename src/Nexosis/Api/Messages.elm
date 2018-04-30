@@ -7,12 +7,12 @@ module Nexosis.Api.Messages exposing (get)
 -}
 
 import Http
-import List
 import HttpBuilder exposing (withExpectJson)
+import List
 import Nexosis exposing (ClientConfig, getBaseUrl)
-import NexosisHelpers exposing (addHeaders, pageParams)
 import Nexosis.Decoders.Message exposing (decodeMessageList)
 import Nexosis.Types.Message exposing (MessageList, Severity)
+import NexosisHelpers exposing (addHeaders, pageParams)
 
 
 type alias MessageQuery =
@@ -47,9 +47,9 @@ get config query =
             )
                 ++ pageParams query.page query.pageSize
     in
-        (getBaseUrl config ++ "/messages")
-            |> HttpBuilder.get
-            |> withExpectJson decodeMessageList
-            |> addHeaders config
-            |> HttpBuilder.withQueryParams params
-            |> HttpBuilder.toRequest
+    (getBaseUrl config ++ "/messages")
+        |> HttpBuilder.get
+        |> withExpectJson decodeMessageList
+        |> addHeaders config
+        |> HttpBuilder.withQueryParams params
+        |> HttpBuilder.toRequest

@@ -1,6 +1,6 @@
-module Nexosis.Decoders.Message exposing (decodeObjectMessage, decodeMessageList, decodeSeverity)
+module Nexosis.Decoders.Message exposing (decodeMessageList, decodeObjectMessage, decodeSeverity)
 
-import Json.Decode exposing (Decoder, andThen, fail, field, map2, string, succeed, list, int)
+import Json.Decode exposing (Decoder, andThen, fail, field, int, list, map2, string, succeed)
 import Json.Decode.Pipeline exposing (decode, required)
 import Nexosis.Types.Message exposing (Message, MessageList, ObjectMessage, Severity(..))
 

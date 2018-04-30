@@ -1,4 +1,4 @@
-module Nexosis.Types.Message exposing (ObjectMessage, Message, MessageList, Severity(..))
+module Nexosis.Types.Message exposing (Message, MessageList, ObjectMessage, Severity(..))
 
 {-| Messages are returned on many different Api endpoints. Generally, these show additional information about an Api Resource.
 Addditionally, you can query for all messages on an organization, session, or import.
