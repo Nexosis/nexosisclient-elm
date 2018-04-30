@@ -1,4 +1,4 @@
-module NexosisHelpers exposing (addHeaders, sortParams)
+module NexosisHelpers exposing (addHeaders, sortParams, pageParams)
 
 import HttpBuilder exposing (RequestBuilder, withBearerToken, withHeader)
 import Nexosis exposing (ClientConfig, withAppHeader, withAuthorization)
@@ -19,4 +19,11 @@ sortParams { sortName, direction } =
         else
             "desc"
       )
+    ]
+
+
+pageParams : Int -> Int -> List ( String, String )
+pageParams page pageSize =
+    [ ( "page", page |> toString )
+    , ( "pageSize", pageSize |> toString )
     ]
