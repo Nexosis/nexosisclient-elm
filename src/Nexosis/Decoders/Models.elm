@@ -7,7 +7,7 @@ import Nexosis.Decoders.Columns exposing (decodeColumnMetadata)
 import Nexosis.Decoders.Data exposing (decodeData)
 import Nexosis.Decoders.Date exposing (decodeDate)
 import Nexosis.Decoders.Link exposing (decodeLink)
-import Nexosis.Decoders.Message exposing (decodeMessage)
+import Nexosis.Decoders.Message exposing (decodeObjectMessage)
 import Nexosis.Decoders.PredictionDomain exposing (decodePredictionDomain)
 import Nexosis.Types.Model exposing (ModelData, ModelList, PredictionResult)
 
@@ -42,4 +42,4 @@ decodePredictions : Decoder PredictionResult
 decodePredictions =
     decode PredictionResult
         |> required "data" decodeData
-        |> required "messages" (list decodeMessage)
+        |> required "messages" (list decodeObjectMessage)

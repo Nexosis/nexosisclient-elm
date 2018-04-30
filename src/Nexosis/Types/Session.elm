@@ -14,7 +14,7 @@ import Dict exposing (Dict)
 import Nexosis.Types.Algorithm exposing (Algorithm)
 import Nexosis.Types.Columns exposing (ColumnMetadata)
 import Nexosis.Types.Link exposing (Link)
-import Nexosis.Types.Message exposing (Message)
+import Nexosis.Types.Message exposing (ObjectMessage)
 import Nexosis.Types.PredictionDomain exposing (PredictionDomain)
 import Nexosis.Types.Status exposing (HistoryRecord, Status)
 import Time.ZonedDateTime exposing (ZonedDateTime)
@@ -35,7 +35,7 @@ type alias SessionData =
     , requestedDate : ZonedDateTime
     , statusHistory : List HistoryRecord
     , extraParameters : Dict String String
-    , messages : List Message
+    , messages : List ObjectMessage
     , name : String
     , dataSourceName : String
     , targetColumn : Maybe String

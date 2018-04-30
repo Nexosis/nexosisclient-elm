@@ -1,14 +1,38 @@
-module Nexosis.Decoders.Message exposing (decodeMessage, decodeSeverity)
+module Nexosis.Decoders.Message exposing (decodeObjectMessage, decodeMessageList, decodeSeverity)
 
-import Json.Decode exposing (Decoder, andThen, fail, field, map2, string, succeed)
-import Nexosis.Types.Message exposing (Message, Severity(..))
+import Json.Decode exposing (Decoder, andThen, fail, field, map2, string, succeed, list, int)
+import Json.Decode.Pipeline exposing (decode, required)
+import Nexosis.Types.Message exposing (Message, MessageList, ObjectMessage, Severity(..))
+
+
+decodeObjectMessage : Decoder ObjectMessage
+decodeObjectMessage =
+    map2 ObjectMessage
+        (field "severity" decodeSeverity)
+        (field "message" string)
+
+
+decodeMessageList : Decoder MessageList
+decodeMessageList =
+    decode MessageList
+        |> required "items" (list decodeMessage)
+        |> required "pageNumber" int
+        |> required "totalPages" int
+        |> required "pageSize" int
+        |> required "totalCount" int
 
 
 decodeMessage : Decoder Message
 decodeMessage =
-    map2 Message
-        (field "severity" decodeSeverity)
-        (field "message" string)
+    decode Message
+        |> required "messageId" string
+        |> required "content" string
+        |> required "severity" decodeSeverity
+        |> required "userId" string
+        |> required "organizationId" string
+        |> required "createAt" string
+        |> required "relatedId" string
+        |> required "relatedTo" string
 
 
 decodeSeverity : Decoder Severity
@@ -17,6 +41,9 @@ decodeSeverity =
         |> andThen
             (\severity ->
                 case severity of
+                    "status" ->
+                        succeed Status
+
                     "debug" ->
                         succeed Debug
 

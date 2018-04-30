@@ -49,12 +49,12 @@ get config page pageSize sorting =
             pageParams page pageSize
                 ++ sortParams sorting
     in
-    (getBaseUrl config ++ "/data")
-        |> HttpBuilder.get
-        |> HttpBuilder.withExpectJson decodeDataSetList
-        |> HttpBuilder.withQueryParams params
-        |> addHeaders config
-        |> HttpBuilder.toRequest
+        (getBaseUrl config ++ "/data")
+            |> HttpBuilder.get
+            |> HttpBuilder.withExpectJson decodeDataSetList
+            |> HttpBuilder.withQueryParams params
+            |> addHeaders config
+            |> HttpBuilder.toRequest
 
 
 {-| GET a single `DataSet`, with paging on the actual contents of the `DataSet`.
@@ -65,12 +65,12 @@ getRetrieveDetail config name pgNum pgSize =
         params =
             pageParams pgNum pgSize
     in
-    (getBaseUrl config ++ "/data/" ++ uriEncodeDataSetName name)
-        |> HttpBuilder.get
-        |> HttpBuilder.withExpectJson decodeDataSetData
-        |> HttpBuilder.withQueryParams params
-        |> addHeaders config
-        |> HttpBuilder.toRequest
+        (getBaseUrl config ++ "/data/" ++ uriEncodeDataSetName name)
+            |> HttpBuilder.get
+            |> HttpBuilder.withExpectJson decodeDataSetData
+            |> HttpBuilder.withQueryParams params
+            |> addHeaders config
+            |> HttpBuilder.toRequest
 
 
 {-| GET data from a `DataSet` filtered by a specific date range. Used for time-series `DataSets`.
@@ -84,12 +84,12 @@ getDataByDateRange config name dateRange include =
                 ++ includeParams include
                 ++ [ ( "formatDates", "true" ) ]
     in
-    (getBaseUrl config ++ "/data/" ++ uriEncodeDataSetName name)
-        |> HttpBuilder.get
-        |> HttpBuilder.withExpectJson decodeDataSetData
-        |> HttpBuilder.withQueryParams params
-        |> addHeaders config
-        |> HttpBuilder.toRequest
+        (getBaseUrl config ++ "/data/" ++ uriEncodeDataSetName name)
+            |> HttpBuilder.get
+            |> HttpBuilder.withExpectJson decodeDataSetData
+            |> HttpBuilder.withQueryParams params
+            |> addHeaders config
+            |> HttpBuilder.toRequest
 
 
 {-| GET stats information about a specific `DataSet`.
@@ -124,11 +124,11 @@ delete config name cascadeOptions =
             Set.toList cascadeOptions
                 |> List.map (\c -> ( "cascade", c ))
     in
-    (getBaseUrl config ++ "/data/" ++ uriEncodeDataSetName name)
-        |> HttpBuilder.delete
-        |> HttpBuilder.withQueryParams cascadeList
-        |> addHeaders config
-        |> HttpBuilder.toRequest
+        (getBaseUrl config ++ "/data/" ++ uriEncodeDataSetName name)
+            |> HttpBuilder.delete
+            |> HttpBuilder.withQueryParams cascadeList
+            |> addHeaders config
+            |> HttpBuilder.toRequest
 
 
 {-| PUT - Upserts data to a dataset. If the `DataSet` has a key column, rows with the same key will be overwritten. If not, all rows will be appended to the existing `DataSet`.
@@ -196,11 +196,11 @@ createDataSetWithKey config dataSetName keyName =
         keyBody =
             Json.Encode.object [ ( "columns", encodeKeyColumnMetadata keyName ) ]
     in
-    (getBaseUrl config ++ "/data/" ++ Http.encodeUri dataSetName)
-        |> HttpBuilder.put
-        |> addHeaders config
-        |> HttpBuilder.withJsonBody keyBody
-        |> HttpBuilder.toRequest
+        (getBaseUrl config ++ "/data/" ++ Http.encodeUri dataSetName)
+            |> HttpBuilder.put
+            |> addHeaders config
+            |> HttpBuilder.withJsonBody keyBody
+            |> HttpBuilder.toRequest
 
 
 dataTypeToString : DataType -> String
@@ -219,11 +219,11 @@ setMissingValues config dataSetName missingValues =
         missingValuesBody =
             Json.Encode.object [ ( "missingValues", encodeMissingValues missingValues ) ]
     in
-    (getBaseUrl config ++ "/data/" ++ Http.encodeUri dataSetName)
-        |> HttpBuilder.put
-        |> addHeaders config
-        |> HttpBuilder.withJsonBody missingValuesBody
-        |> HttpBuilder.toRequest
+        (getBaseUrl config ++ "/data/" ++ Http.encodeUri dataSetName)
+            |> HttpBuilder.put
+            |> addHeaders config
+            |> HttpBuilder.withJsonBody missingValuesBody
+            |> HttpBuilder.toRequest
 
 
 encodeMissingValues : List String -> Json.Encode.Value
