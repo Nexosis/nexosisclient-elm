@@ -1,4 +1,4 @@
-module Nexosis.Api.Messages exposing (get)
+module Nexosis.Api.Messages exposing (MessageQuery, get)
 
 {-| This endpoint returns messages based on the query parameters. All messages on an organization or related to a specific session or import can be queried.
 
@@ -15,6 +15,8 @@ import Nexosis.Types.Message exposing (MessageList, Severity)
 import NexosisHelpers exposing (addHeaders, pageParams)
 
 
+{-| Parameters used to perform the GET `Message`s query.
+-}
 type alias MessageQuery =
     { relatedId : Maybe String
     , levels : Maybe (List Severity)
@@ -23,7 +25,7 @@ type alias MessageQuery =
     }
 
 
-{-| GET a list of `Messages` based on a query
+{-| GET a list of `Message`s based on a query
 -}
 get : ClientConfig -> MessageQuery -> Http.Request MessageList
 get config query =
