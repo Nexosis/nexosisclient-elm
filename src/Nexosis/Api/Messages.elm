@@ -2,7 +2,7 @@ module Nexosis.Api.Messages exposing (MessageQuery, get)
 
 {-| This endpoint returns messages based on the query parameters. All messages on an organization or related to a specific session or import can be queried.
 
-@docs get
+@docs get, MessageQuery
 
 -}
 

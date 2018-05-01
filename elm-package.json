@@ -10,6 +10,7 @@
         "Nexosis",
         "Nexosis.Api.Data",
         "Nexosis.Api.Imports",
+        "Nexosis.Api.Messages",
         "Nexosis.Api.Metrics",
         "Nexosis.Api.Models",
         "Nexosis.Api.Sessions",
