@@ -1,5 +1,5 @@
 {
-    "version": "4.1.0",
+    "version": "4.1.1",
     "summary": "Nexosis API Client",
     "repository": "https://github.com/Nexosis/nexosisclient-elm.git",
     "license": "Apache-2.0",
