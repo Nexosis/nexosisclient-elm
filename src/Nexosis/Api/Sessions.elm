@@ -194,13 +194,21 @@ postModel config sessionRequest =
         |> HttpBuilder.toRequest
 
 
+encodeMissingValues : List String -> Encode.Value
+encodeMissingValues missingValues =
+    if List.isEmpty missingValues then
+        Encode.null
+    else
+        Encode.list <| List.map Encode.string missingValues
+
+
 encodeModelSessionRequest : ModelSessionRequest -> Encode.Value
 encodeModelSessionRequest sessionRequest =
     Encode.object
         [ ( "dataSourceName", Encode.string <| dataSetNameToString <| sessionRequest.dataSourceName )
         , ( "name", encodeName sessionRequest.name )
         , ( "columns", encodeColumnMetadataList <| sessionRequest.columns )
-        , ( "missingValues", Encode.list <| List.map Encode.string sessionRequest.missingValues )
+        , ( "missingValues", encodeMissingValues sessionRequest.missingValues )
         , ( "predictionDomain", Encode.string <| toString <| sessionRequest.predictionDomain )
         , ( "extraParameters", encodeExtraParameters <| sessionRequest )
         ]
@@ -244,7 +252,7 @@ encodeForecastSessionRequest sessionRequest =
         [ ( "dataSourceName", Encode.string <| dataSetNameToString <| sessionRequest.dataSourceName )
         , ( "name", encodeName sessionRequest.name )
         , ( "columns", encodeColumnMetadataList <| sessionRequest.columns )
-        , ( "missingValues", Encode.list <| List.map Encode.string sessionRequest.missingValues )
+        , ( "missingValues", encodeMissingValues sessionRequest.missingValues )
         , ( "startDate", Encode.string <| toISO8601 <| sessionRequest.dates.startDate )
         , ( "endDate", Encode.string <| toISO8601 <| sessionRequest.dates.endDate )
         , ( "resultInterval", Encode.string <| toString <| sessionRequest.resultInterval )
@@ -290,7 +298,7 @@ encodeImpactSessionRequest sessionRequest =
         [ ( "dataSourceName", Encode.string <| dataSetNameToString <| sessionRequest.dataSourceName )
         , ( "name", encodeName sessionRequest.name )
         , ( "columns", encodeColumnMetadataList <| sessionRequest.columns )
-        , ( "missingValues", Encode.list <| List.map Encode.string sessionRequest.missingValues )
+        , ( "missingValues", encodeMissingValues sessionRequest.missingValues )
         , ( "startDate", Encode.string <| toISO8601 <| sessionRequest.dates.startDate )
         , ( "endDate", Encode.string <| toISO8601 <| sessionRequest.dates.endDate )
         , ( "eventName", Encode.string <| sessionRequest.eventName )
