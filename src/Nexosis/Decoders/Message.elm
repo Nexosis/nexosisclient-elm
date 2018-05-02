@@ -30,7 +30,7 @@ decodeMessage =
         |> required "severity" decodeSeverity
         |> required "userId" string
         |> required "organizationId" string
-        |> required "createAt" string
+        |> required "createdAt" string
         |> required "relatedId" string
         |> required "relatedTo" string
 
